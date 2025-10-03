@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="main" id="bg-image">
+    <main>
+        <div class="calculator">
+            <div class="value-section">
+                <div class="value-tab">
+                    <h2 id="value"></h2>
+                </div>
+            </div> 
+            <div class="bottons-section">
+                <div class="bottons">
+                    <div class="row">
+                        <button class="btn">7</button>
+                        <button class="btn">8</button>
+                        <button class="btn">9</button>
+                        <button class="btn">/</button>
+                    </div>
+                    <div class="row">
+                        <button class="btn">4</button>
+                        <button class="btn">5</button>
+                        <button class="btn">6</button>
+                        <button class="btn">*</button>
+                    </div>
+                    <div class="row">
+                        <button class="btn">1</button>
+                        <button class="btn">2</button>
+                        <button class="btn">3</button>
+                        <button class="btn">-</button>
+                    </div>
+                    <div class="row">
+                        <button class="btn">DEL</button>
+                        <button class="btn">0</button>
+                        <button class="btn">.</button>
+                        <button class="btn">+</button>
+                    </div>
+                    <div class="row">
+                        <button class="btn" id="equal">=</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-section">
+            <input type="checkbox" id="changeId" class="change">
+            <label for="changeId" class="label">
+                <div class="text">Change Background</div>
+            </label>
+        </div>
+    </main>
+    
+     <script>
+        let btn = document.querySelectorAll(".btn")
+let value = document.getElementById("value")
+
+for (let i=0; i < btn.length; i++ ) {
+    btn[i].addEventListener("click", function() {
+        if (this.innerHTML == "=") {
+            value.innerHTML = eval(value.innerHTML)
+        } else if (this.innerHTML == "DEL") {
+            value.textContent = ""
+        } else {
+            value.innerHTML += this.innerHTML
+        }
+    })
+}
+
+let mainBg = document.getElementById("bg-image")
+const inputEl = document.querySelector(".change")
+
+
+inputEl.addEventListener("click", function() {
+    update()
+})
+
+function update() {
+    if (inputEl.checked) {
+        document.body.style.backgroundImage = "url('images/background2.jpg')";
+    } else {
+        document.body.style.backgroundImage = "url('images/background1.jpg')";
+    }
+}
+     </script>
+    
+</body>
+</html>
